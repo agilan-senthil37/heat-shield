@@ -1,0 +1,23 @@
+{
+  "retrieved_at": "2026-11-14T06:41:40.099141+00:00",
+  "crs": "EPSG:4326",
+  "analysis_crs": "EPSG:26910",
+  "counts": {
+    "Tracy": 24,
+    "Mountain House": 3,
+    "Alameda County": 379,
+    "Contra Costa County": 242,
+    "Marin County": 63,
+    "Napa County": 40,
+    "San Francisco County": 244,
+    "San Mateo County": 174,
+    "Santa Clara County": 408,
+    "Solano County": 100,
+    "Sonoma County": 122
+  },
+  "scored": 0,
+  "warnings": [
+    "ACS unavailable; scores remain null. Set CENSUS_API_KEY and rerun build. Failure: RuntimeError"
+  ],
+  "validation": "Passed geometry validity, unique IDs, regional bounds, parent containment, all 11 study areas, and score range checks during build."
+}

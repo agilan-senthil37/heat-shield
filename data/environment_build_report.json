@@ -1,0 +1,218 @@
+{
+  "validated_at": "2026-11-14T20:44:09.325326+00:00",
+  "areas": 1799,
+  "studies": [
+    {
+      "study": "Tracy",
+      "areas": 24,
+      "canopy_estimates": 24,
+      "surface_temperature_estimates": 24,
+      "scored": 24,
+      "building_mask": {
+        "applied": 24
+      },
+      "waterbody_mask": {
+        "applied": 24
+      },
+      "conservation_review": {
+        "intersects": 23,
+        "no_mapped_overlap": 1
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Mountain House",
+      "areas": 3,
+      "canopy_estimates": 3,
+      "surface_temperature_estimates": 3,
+      "scored": 3,
+      "building_mask": {
+        "applied": 3
+      },
+      "waterbody_mask": {
+        "applied": 3
+      },
+      "conservation_review": {
+        "intersects": 3
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Alameda County",
+      "areas": 379,
+      "canopy_estimates": 379,
+      "surface_temperature_estimates": 371,
+      "scored": 371,
+      "building_mask": {
+        "applied": 379
+      },
+      "waterbody_mask": {
+        "applied": 379
+      },
+      "conservation_review": {
+        "intersects": 311,
+        "no_mapped_overlap": 68
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Contra Costa County",
+      "areas": 242,
+      "canopy_estimates": 242,
+      "surface_temperature_estimates": 239,
+      "scored": 239,
+      "building_mask": {
+        "applied": 242
+      },
+      "waterbody_mask": {
+        "applied": 242
+      },
+      "conservation_review": {
+        "intersects": 216,
+        "no_mapped_overlap": 26
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Marin County",
+      "areas": 63,
+      "canopy_estimates": 63,
+      "surface_temperature_estimates": 60,
+      "scored": 60,
+      "building_mask": {
+        "applied": 63
+      },
+      "waterbody_mask": {
+        "applied": 63
+      },
+      "conservation_review": {
+        "intersects": 60,
+        "no_mapped_overlap": 3
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Napa County",
+      "areas": 40,
+      "canopy_estimates": 40,
+      "surface_temperature_estimates": 40,
+      "scored": 40,
+      "building_mask": {
+        "applied": 40
+      },
+      "waterbody_mask": {
+        "applied": 40
+      },
+      "conservation_review": {
+        "intersects": 38,
+        "no_mapped_overlap": 2
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "San Francisco County",
+      "areas": 244,
+      "canopy_estimates": 244,
+      "surface_temperature_estimates": 231,
+      "scored": 231,
+      "building_mask": {
+        "applied": 244
+      },
+      "waterbody_mask": {
+        "applied": 244
+      },
+      "conservation_review": {
+        "intersects": 162,
+        "no_mapped_overlap": 82
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "San Mateo County",
+      "areas": 174,
+      "canopy_estimates": 174,
+      "surface_temperature_estimates": 172,
+      "scored": 172,
+      "building_mask": {
+        "applied": 174
+      },
+      "waterbody_mask": {
+        "applied": 174
+      },
+      "conservation_review": {
+        "intersects": 141,
+        "no_mapped_overlap": 33
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Santa Clara County",
+      "areas": 408,
+      "canopy_estimates": 408,
+      "surface_temperature_estimates": 408,
+      "scored": 408,
+      "building_mask": {
+        "applied": 408
+      },
+      "waterbody_mask": {
+        "applied": 408
+      },
+      "conservation_review": {
+        "intersects": 322,
+        "no_mapped_overlap": 86
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Solano County",
+      "areas": 100,
+      "canopy_estimates": 100,
+      "surface_temperature_estimates": 91,
+      "scored": 91,
+      "building_mask": {
+        "applied": 100
+      },
+      "waterbody_mask": {
+        "applied": 100
+      },
+      "conservation_review": {
+        "intersects": 89,
+        "no_mapped_overlap": 11
+      },
+      "source_errors": {}
+    },
+    {
+      "study": "Sonoma County",
+      "areas": 122,
+      "canopy_estimates": 122,
+      "surface_temperature_estimates": 121,
+      "scored": 121,
+      "building_mask": {
+        "applied": 122
+      },
+      "waterbody_mask": {
+        "applied": 122
+      },
+      "conservation_review": {
+        "intersects": 118,
+        "no_mapped_overlap": 4
+      },
+      "source_errors": {}
+    }
+  ],
+  "scored": 1760,
+  "checks": [
+    "all 11 study areas",
+    "unique IDs",
+    "geometry validity",
+    "regional bounds",
+    "screening geometry containment",
+    "indicator ranges and valid-data fractions"
+  ],
+  "limitations": [
+    "Satellite-derived surface temperature, not air temperature.",
+    "Source years and scene dates differ.",
+    "Remaining land is unverified, not approved for planting.",
+    "Database migration and load not tested against a live Supabase project."
+  ]
+}

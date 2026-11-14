@@ -1,0 +1,30 @@
+{
+  "sources": [
+    {
+      "id": "tiger2024",
+      "name": "2024 ACS TIGERweb places and census tracts",
+      "provider": "US Census Bureau",
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_ACS2024/MapServer",
+      "access": "ArcGIS REST GeoJSON, layers 82 (counties), 28, 30 (places), 8 (tracts); object-ID batches prevent truncation",
+      "coverage": "Nine Bay Area counties plus Tracy and Mountain House in San Joaquin County",
+      "source_crs": "ArcGIS service reprojection requested explicitly as EPSG:4326",
+      "terms": "US government data; https://www.census.gov/about/policies/copyright.html",
+      "limitations": "2024 statistical boundaries may differ from current incorporated limits. Mountain House is selected by name from incorporated/CDP layers; no boundary is invented."
+    },
+    {
+      "id": "acs2024",
+      "name": "2024 ACS five-year B17001 poverty estimates",
+      "provider": "US Census Bureau",
+      "url": "https://api.census.gov/data/2024/acs/acs5",
+      "access": "Census JSON API; state 06; counties 001,013,041,055,075,081,085,095,097,077; all tracts",
+      "coverage": "Nine Bay Area counties plus Tracy and Mountain House in San Joaquin County",
+      "terms": "US government data; https://www.census.gov/about/policies/copyright.html",
+      "limitations": "2020\u20132024 survey estimates, not observed heat. Margins of error retained. Whole-tract estimates are attached to clipped polygons without allocating counts to the clipped fraction."
+    }
+  ],
+  "retrieval_date": "Recorded per run as retrieved_at in data/output/bundle.json",
+  "unavailable_inputs": [
+    "Baseline Census build has no environmental inputs; run scripts/environment.py and its building pass for enrichment.",
+    "Utilities, parcel permissions, detailed setbacks, conservation easements and site-specific planting feasibility remain unverified."
+  ]
+}

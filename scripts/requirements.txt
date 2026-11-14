@@ -1,0 +1,5 @@
+shapely==2.0.7
+pyproj==3.6.1
+psycopg[binary]==3.2.6
+
+rasterio==1.4.3

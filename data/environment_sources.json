@@ -1,0 +1,70 @@
+[
+  {
+    "id": "canopy2021",
+    "name": "NLCD TCC CONUS 2021 v2021-4",
+    "provider": "USDA Forest Service / MRLC",
+    "url": "https://www.mrlc.gov/geoserver/mrlc_download/wcs",
+    "coverage_id": "mrlc_download__nlcd_tcc_conus_2021_v2021-4",
+    "metadata_url": "https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_tcc_conus_2021_v2021-4.tif.xml",
+    "source_crs": "EPSG:5070",
+    "units": "percent",
+    "resolution_m": 30,
+    "coverage": "CONUS",
+    "terms": "Publicly distributed US government product; retain USFS/MRLC attribution",
+    "limitations": "Modeled 2021 canopy, not current tree inventory. Metadata defines valid 0\u2013100, non-processing 254, background 255. WCS incorrectly tags zero as nodata; reader uses published numeric range."
+  },
+  {
+    "id": "landcover2021",
+    "name": "NLCD 2021 Land Cover L48",
+    "provider": "USGS / MRLC",
+    "url": "https://www.mrlc.gov/geoserver/mrlc_download/wcs",
+    "coverage_id": "mrlc_download__NLCD_2021_Land_Cover_L48",
+    "source_crs": "EPSG:5070",
+    "resolution_m": 30,
+    "coverage": "CONUS",
+    "terms": "US government public data",
+    "limitations": "Water (11) and wetlands (90/95) are conservatively excluded. Does not resolve buildings, sidewalks or utilities."
+  },
+  {
+    "id": "landsat2024summer",
+    "name": "Landsat Collection 2 Level-2 summer 2024 snapshot",
+    "provider": "USGS; Microsoft Planetary Computer distribution",
+    "url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+    "documentation": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+    "source_crs": "Preserved per scene GeoTIFF and STAC item in raw/environment",
+    "coverage": "Study-region intersections with Landsat 8/9 scenes",
+    "terms": "USGS Landsat open data; hosted asset access uses temporary signed URLs which are not stored in metadata",
+    "limitations": "One scene per study selected for cloud-adjusted geographic overlap during July\u2013August 2024; dates differ, not climatology. QA excludes fill, dilated cloud, cirrus, cloud, cloud shadow, snow, water and radiometric saturation. Requires 50% valid coverage. Surface temperature retrieval, not observed air temperature."
+  },
+  {
+    "id": "cpad2026a",
+    "name": "CPAD 2026a holdings",
+    "provider": "GreenInfo Network; California Department of Fish and Wildlife distribution",
+    "url": "https://services2.arcgis.com/Uq9r85Potqm3MfRV/ArcGIS/rest/services/CPAD_Holdings_wm/FeatureServer/0",
+    "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/f04ab55056744f09a2154ff1615e462f?f=pjson",
+    "source_crs": "EPSG:3857; API output explicitly EPSG:4326",
+    "coverage": "California",
+    "terms": "CPAD attribution and State disclaimer; planning use, not a legal determination",
+    "limitations": "Protected holdings flag review; no automatic exclusion or implied permission. Conservation easements not included."
+  },
+  {
+    "id": "fema_structures",
+    "name": "USA Structures",
+    "provider": "FEMA / ORNL; Esri US Federal Data distribution",
+    "url": "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/USA_Structures_View/FeatureServer/0",
+    "source_crs": "Service geometry reprojected explicitly to EPSG:4326",
+    "coverage": "USA; study bounds queried by object IDs in complete batches",
+    "terms": "Public FEMA-derived data; retain source attribution and dataset metadata",
+    "limitations": "Image-derived footprints, may omit small/new structures; no utilities or parcel rights. Service can change; cached GeoJSON preserves retrieval."
+  },
+  {
+    "id": "nhd_waterbodies",
+    "name": "NHD large-scale waterbodies",
+    "provider": "USGS",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/12",
+    "source_crs": "Service geometry reprojected explicitly to EPSG:4326",
+    "coverage": "USA; queried by study bounds",
+    "terms": "US government public data",
+    "limitations": "NHD retired in 2023; local source vintages vary. Waterbody polygons supplement the NLCD water/wetland mask but do not cover every stream/coast/seasonal feature."
+  }
+]
