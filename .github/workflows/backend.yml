@@ -1,0 +1,36 @@
+name: Backend checks
+on:
+  push:
+    branches: [main, feature/backend]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Production smoke test with synthetic data
+        env:
+          DATA_MODE: demo
+          AI_MODE: template
+          DEMO_ACCESS_TOKEN: ci-demo-only
+          SMOKE_ACCESS_TOKEN: ci-demo-only
+        run: |
+          npm start > /tmp/heatshield.log 2>&1 &
+          APP_PID=$!
+          trap 'kill "$APP_PID"' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:3000/api/health; then break; fi
+            sleep 1
+          done
+          npm run smoke
