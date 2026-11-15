@@ -1,0 +1,31 @@
+project_id = "heat-shield"
+
+[api]
+enabled = true
+port = 54321
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:4179"
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+otp_length = 6
+otp_expiry = 600
+max_frequency = "60s"
+
+[auth.email.template.confirmation]
+subject = "Your Heat Shield verification code"
+content_path = "./supabase/templates/verification-code.html"
+
+[auth.email.template.magic_link]
+subject = "Your Heat Shield verification code"
+content_path = "./supabase/templates/verification-code.html"
