@@ -123,7 +123,7 @@ def vectors(url,study):
         def fetch_batch(offset):
             batch_path=CACHE/(key+'_'+str(offset)+'.json')
             if batch_path.exists():return json.loads(batch_path.read_text())
-            payload=urllib.parse.urlencode(dict(f='geojson',objectIds=','.join(map(str,ids[offset:offset+1000])),outFields='OBJECTID',outSR=4326)).encode()
+            payload=urllib.parse.urlencode(dict(f='geojson',objectIds=','.join(map(str,ids[offset:offset+1000])),outFields='FID' if url == CPAD else 'OBJECTID',outSR=4326)).encode()
             with urllib.request.urlopen(url+'/query',data=payload,timeout=120) as r:batch=json.load(r)
             if 'features' not in batch:raise RuntimeError('Vector geometry query failed')
             if len(batch['features'])!=len(ids[offset:offset+1000]):raise RuntimeError('Truncated vector batch')

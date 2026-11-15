@@ -57,3 +57,7 @@ For local Auth testing, the committed `supabase/config.toml` and template work w
 The GIS values are dated screening estimates (2024 Landsat surface temperature and 2021 canopy), and the shapes are screening areas. A field visit is required to confirm a particular planting spot. Email verification confirms control of an email address, not residence. The team API provides geodata and protected proposal reports; profiles, friendships and inbox state currently use the frontend's SQLite service, not the team's Supabase tables. A rollout across multiple instances needs shared community storage and deployment-level rate limits before opening public registration.
 
 Nothing needs to be pushed to the team repository to run the local preview.
+
+Proposal invitations appear in Photosynthesis. The sender can invite more people from Sent calls, and accepted collaborators can invite another eligible collaborator from their inbox. Forwarded invitations keep the original candidate areas and named map point. Opted-in Tracy and Mountain House profiles can find each other across ZIP codes.
+
+To deliver proposal emails, set `HEAT_SHIELD_RESEND_KEY`, `HEAT_SHIELD_EMAIL_FROM` (a verified Resend sender), and `HEAT_SHIELD_PUBLIC_URL` (the public HTTPS address of this app) on the frontend server. Supabase continues to handle sign-in codes. For isolated development tests only, set `HEAT_SHIELD_TEST_MAIL_PORT` to a loopback mail capture service that accepts `POST /emails` with a Resend-style JSON payload.

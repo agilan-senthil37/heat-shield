@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, X, Compass } from 'lucide-react';
 
 const steps = [
   ['filters','Narrow your search','Use priority, high heat, and low canopy filters to find the sites you want to investigate. The map and ranked list update together.'],
-  ['site-map','Read the landscape','Switch between Street, Heat, Vegetation, and Satellite. Drag to pan, or use the map controls. Select a numbered pin for a popup with its rank and scores.'],
+  ['site-map','Read the landscape','Switch between Street, Heat, Vegetation, and Satellite. Drag to pan, or use the map controls. Select an outlined area or a numbered pin to open its scores and shortlist it. Use the crosshair to return to the study area overview.'],
   ['ranked','Compare candidates','Hover over the left edge or select Candidates to open the ranked list. Select any row to center the map and read its evidence.'],
   ['evidence','Read the evidence','Hover over the right edge or select Site details to open the full brief. The explanation describes the evidence behind the ranking.'],
   ['evidence','Compare two sites','Add a site to the comparison, then select a second candidate. Open the comparison to see their heat, canopy, and priority side by side.'],

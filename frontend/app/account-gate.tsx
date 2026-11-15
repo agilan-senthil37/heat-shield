@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { ArrowRight, TreeDeciduous } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { initial, people, storageKey, type Workspace } from './community';
 import { live, pilot } from './data';
+import HeatShieldBrand from './heatshield-brand';
 import EmailEntry from './email-entry';
 
 const entryKey = 'heat-shield-entered';
@@ -12,6 +13,7 @@ const entryKey = 'heat-shield-entered';
 export default function AccountGate({ children }: { children: ReactNode }) {
   const [state, setState] = useState<'loading' | 'welcome' | 'ready'>('loading');
   const [emailConfigured, setEmailConfigured] = useState(false);
+  const [needsProfile, setNeedsProfile] = useState(false);
   const [account, setAccount] = useState(initial.account);
   const [error, setError] = useState('');
 
@@ -25,6 +27,7 @@ export default function AccountGate({ children }: { children: ReactNode }) {
       const config = await response.json();
       if (controller.signal.aborted) return;
       setEmailConfigured(config.emailConfigured);
+      setNeedsProfile(config.profileRequired === true);
       setState(!config.emailRequired && localStorage.getItem(entryKey) === 'yes' ? 'ready' : 'welcome');
     }).catch(() => {
       if (controller.signal.aborted) return;
@@ -57,7 +60,7 @@ export default function AccountGate({ children }: { children: ReactNode }) {
 
   return <main className="account-entry">
     <div className="entry-intro">
-      <div className="account-brand"><span><TreeDeciduous size={24}/></span> Heat Shield</div>
+      <div className="account-brand"><HeatShieldBrand/></div>
       <p className="eyebrow">Community tree planting · Northern California</p>
       <h1>More shade for the streets we share.</h1>
       <p>Find blocks where trees could make a difference, walk the site with a neighbor, and make a plan together.</p>
@@ -66,7 +69,7 @@ export default function AccountGate({ children }: { children: ReactNode }) {
     <section className="account-card" aria-labelledby="account-title">
       <h2 id="account-title">{emailConfigured ? 'Sign in or create an account' : 'Open the field atlas'}</h2>
       {state === 'loading' ? <p role="status">Checking your account…</p> : <>
-        {emailConfigured ? <EmailEntry onVerified={()=>setState('ready')}/> :
+        {emailConfigured ? <EmailEntry needsProfile={needsProfile} onVerified={()=>setState('ready')}/> :
           <p>{live ? 'Email verification is unavailable. Sign-in is required to send planting calls.' : pilot ? 'This preview uses San José city inventory. You can create a local account in Photosynthesis to try planting calls.' : 'Try the workflow with sample locations.'}</p>}
         {live || pilot || emailConfigured ? <button type="button" className={emailConfigured ? 'secondary' : 'primary'} onClick={()=>{sessionStorage.setItem('heat-shield-browse','yes'); if (window.location.pathname === '/') window.location.assign('/explore'); else setState('ready');}}>Browse Pinpoint <ArrowRight size={17}/></button>
         : <form onSubmit={enterDemo}>

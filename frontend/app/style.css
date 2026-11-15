@@ -183,14 +183,6 @@
   box-shadow: 0 18px 60px #0b211a55;
 }
 .account-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
-.account-brand span {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: var(--lime);
-}
 .account-card h1 { margin: 18px 0 8px; font: 600 clamp(28px, 6vw, 38px)/1.06 Georgia, serif; }
 .account-card p { margin: 0 0 14px; color: var(--body); }
 .account-card form { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 15px; }
@@ -502,13 +494,13 @@
 @media print { .live-community { display: none !important; } }
 
 .screening-areas { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
-.screening-areas path { transform: translate(50%, 50%); pointer-events: visiblePainted; cursor: pointer; }
+.screening-areas path { pointer-events: visiblePainted; cursor: pointer; }
 
 /* Account entry and community field desk */
 .account-entry{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);place-items:center;gap:clamp(24px,6vw,90px);padding:clamp(24px,7vw,110px);background:#17392c url('/contours.svg') right center / cover no-repeat}
 .entry-intro{color:#fcf7e9;max-width:650px}
 .entry-intro .account-brand{margin-bottom:clamp(28px,6vw,80px)}
-.entry-intro .account-brand span{color:var(--forest)}
+.entry-intro .account-brand{font-size:clamp(24px,4vw,39px)}
 .entry-intro .eyebrow{color:#d6ed9b}
 .entry-intro h1{font:500 clamp(40px,6vw,88px)/.98 Georgia,serif;letter-spacing:-.055em;margin:12px 0 18px;max-width:13ch}
 .entry-intro>p:not(.eyebrow){font-size:17px;max-width:44ch;color:#e5eadc}
@@ -529,3 +521,61 @@
 .live-community .send-sites{margin:6px 0;padding-left:22px;color:var(--body)}
 .live-community p[role=status]:empty,.account-card p[role=status]:empty{display:none}
 @media(max-width:720px){.account-entry{grid-template-columns:1fr;place-items:start;padding:24px}.account-card{width:100%}.entry-intro ol{display:none}}
+
+/* Keep navigation and selection separate from the map overlays. */
+.map-instructions {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border-left: 3px solid #789463;
+  color: var(--ink);
+  background: var(--white);
+}
+.map-workspace .map-top, .map-workspace .map-buttons, .map-workspace .pan,
+.map-workspace .map-bottom, .map-workspace .attribution { z-index: 3; }
+.map-workspace .map-buttons { top: 12px; flex-direction: row; }
+.map-workspace .map-buttons button, .map-workspace .pan button { min-width: 30px; min-height: 28px; }
+.map-workspace .map-drawer { top: 98px; }
+.screening-areas path:hover { stroke: #17392c; stroke-opacity: 1; stroke-width: 2; }
+.screening-areas .selected-tract:hover { stroke-width: 2.5; }
+@media (max-width: 460px) {
+  .map-workspace .map-buttons { top: 54px; }
+}
+
+.meeting-actions { margin: 8px 0; }
+.meeting-actions .secondary { min-height: 34px; }
+.meeting-picker, .meeting-summary { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.meeting-picker { position: absolute; z-index: 7; inset: auto 10px 28px auto; width: min(365px, calc(100% - 20px)); max-height: 58%; overflow: auto; cursor: auto; }
+.meeting-picker p { margin: 4px 0; font-size: 13px; }
+.meeting-picker label { display: block; font-weight: 650; }
+.meeting-picker input { display: block; width: 100%; padding: 5px; margin: 4px 0; }
+.meeting-pin { position: absolute; transform: translate(-50%, -95%); display: grid; place-items: center; color: #fff; background: #174436; border: 2px solid #fff; width: 34px; height: 34px; border-radius: 50% 50% 50% 5px; z-index: 2; pointer-events: none; }
+.map[data-picking="true"], .map[data-picking="true"] .screening-areas path { cursor: crosshair; }
+.meeting-summary { margin: 12px 0; }
+.shade-method { margin-top: 6px; font-size: 12px; }
+.shade-method summary { font-weight: 650; }
+.shade-method p { margin: 5px 0; }
+
+/* HeatShield: the leaf sits inside a shield, with a warm sun above it. */
+.brand > .heatshield-lockup, .account-brand > .heatshield-lockup, .heatshield-lockup {
+  display: inline-flex; align-items: center; gap: .57em; width: auto; height: auto;
+  color: inherit; background: none; border-radius: 0; white-space: nowrap;
+}
+.heatshield-mark { width: 2em; height: 2em; flex: none; }
+.heatshield-wordmark { font-weight: 850; letter-spacing: -.065em; line-height: 1; }
+.heatshield-wordmark > span { color: #d7ee99; }
+footer .heatshield-lockup { margin: 0 .8em 0 0; }
+footer .heatshield-lockup span { margin-left: 0; }
+footer .heatshield-wordmark > span { color: #38654e; }
+footer .heatshield-mark { width: 1.65em; height: 1.65em; }
+
+.zone-land-context { margin: 8px 0; }
+.zone-land-context summary { font-weight: 650; }
+.zone-land-context p { margin: 5px 0; font-size: 12px; }
+.map-workspace .pin-popup:has(.zone-land-context[open]) { max-height: 65%; overflow-y: auto; }
+
+.proposal-chat { margin-block: 12px; }
+.proposal-chat summary { font-weight: 700; cursor: pointer; }
+.proposal-chat-log { max-height: 16rem; overflow-y: auto; list-style: none; padding: 0; }
+.proposal-chat-log li { margin-block: 8px; padding: 8px 12px; background: #edf3e7; border-radius: 6px; }
+.proposal-chat-log li p { margin-block: 4px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.proposal-chat-log time { font-size: .8em; }

@@ -29,7 +29,7 @@ export const filtersSchema = z
     max_canopy: z.coerce.number().min(0).max(1).optional(),
     limit: z.coerce.number().int().min(1).max(100).default(20),
     offset: z.coerce.number().int().min(0).max(100000).default(0),
-    include_geometry: z.enum(["true", "false"]).default("false"),
+    include_geometry: z.enum(["true", "false", "outline"]).default("false"),
   })
   .strict();
 export type Filters = z.infer<typeof filtersSchema>;

@@ -13,6 +13,7 @@ import {
 } from "./schema";
 import { regionalColumns, regionalSite, type Filters } from "./regional";
 import { scoreSite } from "./scoring";
+import { shadeZone } from "./shade-zones";
 import fixtures from "../../data/demo-sites.json";
 export function db(token?: string) {
   const url = process.env.SUPABASE_URL,
@@ -66,7 +67,8 @@ export async function listSites(f: Filters) {
     .from("environmental_candidates")
     .select(
       regionalColumns +
-        (f.include_geometry === "true" ? ",geometry,screening_geometry" : ""),
+        (f.include_geometry === "true" ? ",geometry,screening_geometry" :
+          f.include_geometry === "outline" ? ",geometry" : ""),
       { count: "exact" },
     );
   if (f.study_area) q = q.eq("study_area", f.study_area);
@@ -96,6 +98,8 @@ export async function site(id: string) {
     if (!found) throw new ApiError(404, "SITE_NOT_FOUND", "Site not found");
     return scoreSite(siteSchema.parse(found));
   }
+  const zone = shadeZone(id);
+  if (zone) return zone;
   const { data, error } = await db()
     .from("environmental_candidates")
     .select(regionalColumns + ",geometry,screening_geometry")

@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 async function forward(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
   const path = (await context.params).path.join('/');
   const writing = request.method === 'POST';
-  const allowed = writing ? /^(explain|proposals)$/ : /^(sites|proposals\/[\w-]+\/pdf)$/;
+  const allowed = writing ? /^(explain|proposals)$/ : /^(sites|shade-zones|proposals\/[\w-]+\/pdf)$/;
   if (!allowed.test(path)) return new Response(null, {status:404});
   if (writing && request.headers.get('origin') !== (process.env.HEAT_SHIELD_HTTPS === 'true' ? 'https:' : request.nextUrl.protocol) + '//' + request.headers.get('host')) return new Response(null,{status:403});
   const base = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '');

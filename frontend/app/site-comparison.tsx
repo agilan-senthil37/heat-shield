@@ -2,7 +2,7 @@ import { label, type Site } from './data';
 
 const metrics: { name: string; read: (site: Site) => string }[] = [
   { name: 'Priority', read: site => site.priority_score == null ? 'Unranked' : site.priority_score + '/100' },
-  { name: 'Heat exposure', read: site => site.heat_score == null ? 'Unavailable' : site.heat_score + '/100' },
+  { name: 'Ground temperature / heat score', read: site => site.surfaceTemperature != null ? site.surfaceTemperature.toFixed(1) + ' °C' : site.heat_score == null ? 'Unavailable' : site.heat_score + '/100' },
   { name: 'Tree canopy', read: site => site.canopy_coverage == null ? 'Unavailable' : site.canopy_coverage + '%' },
   { name: 'Field status', read: site => (site.verification_status ?? 'needs verification').replaceAll('_', ' ') },
 ];
