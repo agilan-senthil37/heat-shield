@@ -65,15 +65,17 @@ No map snapshot is included in the current PDF: it contains site coordinates and
 
 ## GitHub and judging
 
-Use small pull requests into `main`; do not force-push shared history. GitHub Actions runs lint, tests, typecheck, build, and a production smoke test. A green local run does not establish Supabase/OpenAI live connectivity.
+- [Open the public HeatShield app](https://heatshield-u7th.onrender.com)
+- [Watch the 2:25 demo video](https://drive.google.com/file/d/16PdaGaJ59txR2BdjSNBgk2KrRFdTJbPT/view)
+- [Read the judge instructions](docs/JUDGES.md)
 
-Judges need the repository, deployed public app, this README, and a demo video link. Remaining submission fields:
+Use the **Field guide** button in the top-right corner for a pop-up tutorial on Pinpoint, Proposal, or Photosynthesis.
 
-- Public app URL: not deployed yet.
-- Demo video: not recorded yet.
-- Live data and AI validation: pending project credentials/data.
+### Live validation
 
-See [docs/API.md](docs/API.md) and [docs/CODEX-STEPS.md](docs/CODEX-STEPS.md).
+Test with two verified accounts. Load the Tracy and Mountain House maps, shortlist a location, add a meeting point, and send a proposal. Confirm the second account receives the invitation by email and in Photosynthesis, then accept it and exchange a message. Verify any OpenAI-backed features separately on the deployed app.
+
+GitHub Actions runs lint, tests, typecheck, build, and a production smoke test. Use small pull requests into `main` and avoid force-pushing shared history. See the [API documentation](docs/API.md) and [developer setup](docs/CODEX-STEPS.md).
 
 ## Scoring compatibility
 
