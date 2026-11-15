@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: heatshield
+    runtime: node
+    plan: free
+    autoDeployTrigger: "off"
+    buildCommand: npm ci --include=dev && npm ci --include=dev --prefix frontend && npm run build && NEXT_PUBLIC_DATA_MODE=live npm run build --prefix frontend
+    startCommand: node scripts/start-hosted.mjs
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "24.16.0"
+      - key: HEAT_SHIELD_DB
+        value: /tmp/heat-shield.sqlite
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false

@@ -1,5 +1,13 @@
 # Host HeatShield
 
+## Free demo on Render
+
+Open the [Deploy to Render shortcut](https://render.com/deploy?repo=https://github.com/agilan-senthil37/heat-shield). Sign in and grant the Render GitHub App access to the standalone repository. Enter the team's Supabase URL and publishable key, then approve the Blueprint. Render sets the public URL automatically. Optional proposal invitation email settings can be added to the service after deployment.
+
+The free Blueprint stores community data under `/tmp`, which Render clears on spin-down, restart, or redeploy. Test with disposable profiles and use the persistent setup below for community records that need to survive.
+
+## Persistent deployment
+
 Use one Node 24 web service with a persistent volume. The start script exposes the frontend on the host's PORT and runs the mapping API on loopback. Use HTTPS at the host's reverse proxy.
 
 Build command:

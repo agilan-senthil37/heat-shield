@@ -4,11 +4,12 @@ import { mkdir } from 'node:fs/promises';
 import { dirname, isAbsolute } from 'node:path';
 import { setTimeout } from 'node:timers/promises';
 
-const { HEAT_SHIELD_DB, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, HEAT_SHIELD_PUBLIC_URL } = process.env;
-if (!HEAT_SHIELD_DB || !isAbsolute(HEAT_SHIELD_DB) || !SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY || !HEAT_SHIELD_PUBLIC_URL) {
+const { HEAT_SHIELD_DB, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, RENDER_EXTERNAL_URL } = process.env;
+const publicUrl = process.env.HEAT_SHIELD_PUBLIC_URL || RENDER_EXTERNAL_URL;
+if (!HEAT_SHIELD_DB || !isAbsolute(HEAT_SHIELD_DB) || !SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY || !publicUrl) {
   throw new Error('Set an absolute HEAT_SHIELD_DB path on a persistent volume, Supabase settings, and HEAT_SHIELD_PUBLIC_URL.');
 }
-if (new URL(HEAT_SHIELD_PUBLIC_URL).protocol !== 'https:') {
+if (new URL(publicUrl).protocol !== 'https:') {
   throw new Error('HEAT_SHIELD_PUBLIC_URL must use HTTPS.');
 }
 await mkdir(dirname(HEAT_SHIELD_DB), { recursive: true });
@@ -56,6 +57,7 @@ try {
       NEXT_PUBLIC_DATA_MODE: 'live',
       NEXT_PUBLIC_API_BASE_URL: backendUrl,
       HEAT_SHIELD_HTTPS: 'true',
+      HEAT_SHIELD_PUBLIC_URL: publicUrl,
     });
     await once(frontend, 'exit');
   }

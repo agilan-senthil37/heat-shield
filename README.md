@@ -1,5 +1,9 @@
 # HeatShield backend
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/agilan-senthil37/heat-shield)
+
+The button sets up a free HeatShield demo with a public HTTPS URL. Render asks for your Supabase project URL and publishable key. The free demo resets local community data when the service sleeps or restarts. See [Hosting](docs/HOSTING.md) for deployment and storage details.
+
 Next.js + TypeScript backend for the Rotary AI for Good tree-planting planner, integrated with the published `feature/database` regional GIS schema. Frontend and GIS development remain separate team responsibilities.
 
 The active Supabase integration reads `environmental_candidates`: neighborhood screening polygons across the nine Bay Area counties plus Tracy and Mountain House. These are not verified individual planting sites. The published GIS report describes 1,799 areas; live database loading still needs verification. See [supabase/README.md](supabase/README.md) for the data pipeline.
